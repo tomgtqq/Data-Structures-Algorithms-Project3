@@ -1,0 +1,58 @@
+The Space Complexity O(n). It's a extensible collection
+The worst case , "not in" has Time Complexity O(n)
+
+class TrieNode:
+    def __init__(self):
+        self.is_word = False
+        self.children = {}     
+    
+    def insert(self, char):         
+        if char not in self.children:     
+            self.children[char] = TrieNode()
+        
+    def suffixes(self, suffix = ''):
+        suffixes_list = []
+        if self.is_word:
+            suffixes_list.append(suffix)
+
+
+We can find the node which represents the prefix, then We can find all possible word by looping keys as suffix inputting. then recursively search all children. The base case is is_word equal True.Time Complexity is O(m^n). n is the number of recursive calls and m is number of keys that is How many times it loops.
+
+
+        for key in self.children.keys():     
+            suffix += key
+            suffixes_list += self.children[key].suffixes(suffix)
+            
+        return suffixes_list
+        
+
+class Trie:
+    def __init__(self):
+        self.root = TrieNode()    # It's extensible data structure. so the Space Complexity is O(n). 
+
+
+    def insert(self, word):
+  
+        curr_node = self.root
+        
+        for char in word:    # Time Complexity is O(n), "n" is length of word.
+                curr_node.insert(char)
+                curr_node = curr_node.children[char]
+                
+        curr_node.is_word = True
+
+    def find(self, prefix):
+
+        curr_node = self.root
+        
+        if not prefix:
+            return None
+        '''
+        find the node which represents the prefix. the Time Complexity is O(n) , "n" is length of prefix.
+        '''
+        for char in prefix:    
+            if char not in curr_node.children:
+                return None
+            curr_node = curr_node.children[char]
+            
+        return curr_node

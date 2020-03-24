@@ -1,0 +1,7 @@
+The array we are given may not be sorted well, so we need to sort the array first, and we will use the heapsort because heapsort has the time complexity O(nlogn) in the worst case. so we convert the array into a maxheap then, swap the top element with the last element in the array. Repeat with comparing  every node with it's left_node and right_node to find the largest_index. then swap the values. now we get the largest value . then swap the largest value with the last node value. so we fixed the largest value position in the array. heapify again to find the second largest value. then swap with the last node again. so we fixed the second largest value position in the array. Repeat this operation. so we get a small to large array. If we want to get the laregest the sum of the two Numbers, then we have to make the two Numbers largest at most. 1. The more digits, the larger the number. 2. The higher the high value, the larger the number. So we start with the minimum value of the array and assign it to the lowest value, and so on, and the highest value to the highest bit.
+
+The Worst:
+
+The time complexity is O(log(n)). Because we're kind of doing it on the complete tree. Each node has a maximum of two child nodes. 
+
+The space complexity is O(1), becuase It's in-place operation.

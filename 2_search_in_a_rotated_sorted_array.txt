@@ -1,0 +1,7 @@
+If the input array is unrotated, we can use binary search directly. but the problem is the array is unsorted. So we need to find where is the smallest element which the array starts. we can divide tow sorted array and then using binary search to find "number". First, we set left, midpoint, right index of input_list. if input_list[mindpoint] is greater then the last element, the midpoint is in unnormal situation(Let's say the array is not rotated. The last one is the largest). so moving left equal midpoint + 1(we sure the midpoint is not the smallest. so we let left equal midpoint + 1). otherwise, it is a normal situation. we need to let right equal midpoint(because we didn't make sure the midpoint is the smallest or not, here we can't let right equal midpoint + 1). when the left meets right, we find the smallest element. so we get the start position. Second, we check the "number" in which sorted part.  if the "number" is greater then input_list[start] and less then input_list[right]. it's a perfect situation. we let left equal start. using "binary search" to find "number". otherwise, the "number" in the left rotated part. we let right equal start - 1 and using "binary search" too. 
+
+The Worst:
+
+So we used "binary search" to find the smallest value, then find the target value. so The time complexity is O(log(n)).
+
+The space complexity is O(1) because It's in-place operation. 

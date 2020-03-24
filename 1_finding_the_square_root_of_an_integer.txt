@@ -1,0 +1,24 @@
+Finding square root of an integer, The problem can be converted to looking for a specific value in an ordered set of integers. because the expected time complexity is 0(log(n)). we can use binary search algorithm. When Inputting "number" < 2 ,  Just return number. beacuse The square root of 0 or 1 is itself.
+when Inputting "number" >= 2, The square root of "number" should be less than "number"/2 . so search scope can be reduced to improve efficiency. 
+
+	left = 2          #  The left border initialized to 2
+    right = number // 2  # The right border initialized to a half of "number"
+
+    while left <= right:
+        mid = left + (right - left) // 2       
+        num = mid * mid
+
+        if num < number:   # The square is less then number . 
+            left = mid + 1   # Moving left border to mid + 1. so cutting search scope half again
+        elif num > number:   # The square is bigger then number . 
+            right = mid - 1	 # Moving right border to mid - 1. so cutting search scope half again
+        else:
+            return mid		 #  finding the square root
+
+    return right   # if not finding the square root . and while loop is over. so left > right we need to 				     return the floor value at "right" position
+
+The Worst:
+
+The time complexity is O(log(n)), because every time we cutting search scope half.
+
+The space complexity is O(1), becuase It's in-place operation.

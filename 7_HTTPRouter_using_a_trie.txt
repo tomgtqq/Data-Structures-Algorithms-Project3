@@ -1,0 +1,28 @@
+We use the trie data structure to implement router.  we can find the url and respond to the corresponding handler.
+
+The time complexity of RouteTrie is executing insert and find to take. It's O(n) where "n" is lenght of path. 
+
+The space complexity is O(n), the trie structure is extensible           
+
+
+class RouteTrie:
+    def __init__(self, handler):
+        self.root = RouteTrieNode()
+        self.insert("/", handler)
+
+    def insert(self, path, handler):
+        curr_node = self.root
+        for component in path:
+            if component not in curr_node.children:
+                curr_node.insert(component)
+            curr_node = curr_node.children[component]
+        curr_node.handler = handler
+
+    def find(self, path):
+        curr_node = self.root
+        for component in path:
+            if component not in curr_node.children:
+                return None
+            curr_node = curr_node.children[component]
+        return curr_node.handler
+

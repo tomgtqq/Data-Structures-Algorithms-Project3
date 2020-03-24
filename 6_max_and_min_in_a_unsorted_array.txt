@@ -1,0 +1,4 @@
+Set "smallest" and "largest" two variables to compared with each element of array. Change the value of the variable if the condition is met. So we can find "smallest" and "largest" in a single traversal.
+
+Time Complexity: O(n)
+Space Complexity: O(1)
